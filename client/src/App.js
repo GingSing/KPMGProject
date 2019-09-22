@@ -1,17 +1,50 @@
 import React, { Component } from "react";
 import "./App.css";
 import { Overlay } from "./components";
+import { EventEmitter } from "events";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       overlay: false,
       loading: false,
-      data: {}
+      date_issued: "",
+      file_number: "",
+      case_type: "",
+      index: "",
+      applicant_name: "",
+      applicant_self_represented: "",
+      respondent_name: "",
+      respondent_self_represented: "",
+      tribunal_member: "",
+      introduction: "",
+      section_number: "",
+      rule_number: "",
+      hearing_format: "",
+      issue_type: "",
+      evidence_analysis: "",
+      decision: "",
+      claim_amount: "",
+      reimburse_applicant: "",
+      reimbursement_amount: "",
+
     };
+
+    this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    const target = e.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    })
+    console.log(`${name} = ${value}`);
   }
 
   handleClick() {
@@ -21,6 +54,7 @@ class App extends Component {
   handleSubmit(e) {
     e.preventDefault();
   }
+
   render() {
     return (
       <div className="App">
@@ -33,22 +67,26 @@ class App extends Component {
               <input
                 className="form-control"
                 type="date"
+                value={this.state.date_issued}
                 id="date_issued"
                 name="date_issued"
+                onChange={this.handleChange}
               />
             </div>
             <div className="form-group">
               <label for="file_number">File Number: </label>
               <input
                 className="form-control"
+                value={this.state.file_number}
                 type="text"
                 id="file_number"
                 name="file_number"
+                onChange={this.handleChange}
               />
             </div>
             <div className="form-group">
               <label for="case_type">Case Type: </label>
-              <select className="form-control" id="case_type" name="case_type">
+              <select className="form-control" id="case_type" name="case_type" value={this.state.case_type} onChange={this.handleChange}>
                 <option value="Small Claims">Small Claims</option>
                 <option value="Strata">Strata</option>
               </select>
@@ -60,6 +98,8 @@ class App extends Component {
                 type="text"
                 id="index"
                 name="index"
+                value={this.state.index} 
+                onChange={this.handleChange}
               />
             </div>
             <div className="form-group">
@@ -69,6 +109,8 @@ class App extends Component {
                 type="text"
                 id="applicant_name"
                 name="applicant_name"
+                value={this.state.applicant_name} 
+                onChange={this.handleChange}
               />
             </div>
             <div className="form-group">
@@ -79,6 +121,8 @@ class App extends Component {
                 className="form-control"
                 id="applicant_self_represented"
                 name="applicant_self_represented"
+                value={this.state.applicant_self_represented} 
+                onChange={this.handleChange}
               >
                 <option value="1">Yes</option>
                 <option value="0" onclick="loadApplicantLawyerName()">
@@ -93,6 +137,8 @@ class App extends Component {
                 type="text"
                 id="respondent_name"
                 name="respondent_name"
+                value={this.state.respondent_name} 
+                onChange={this.handleChange}
               />
             </div>
             <div className="form-group">
@@ -103,6 +149,8 @@ class App extends Component {
                 className="form-control"
                 id="respondent_self_represented"
                 name="respondent_self_represented"
+                value={this.state.respondent_self_represented} 
+                onChange={this.handleChange}
               >
                 <option value="1">Yes</option>
                 <option value="0" onclick="loadRespondentLawyerName()">
@@ -117,6 +165,8 @@ class App extends Component {
                 type="text"
                 id="tribunal_member"
                 name="tribunal_member"
+                value={this.state.tribunal_member} 
+                onChange={this.handleChange}
               />
             </div>
             <button
@@ -132,15 +182,20 @@ class App extends Component {
           <Overlay loading={this.state.loading} handleClick={this.handleClick}>
             <div className="templateWrapper">
               <form className="templateForm">
+                <p className="rightText">Date Issued: {this.state.date_issued}</p>
+                <p className="rightText">File: {this.state.file_number}</p>
+                <p className="rightText">Case: {this.state.case_type}</p>
+                <p className="centerText">Civil Resolution Tribunal</p>
+                <p className="centerText">Indexed as: {this.state.index}</p>
+
                 <h2>Introduction</h2>
-                <p>Summary:</p>
                 <input
                   className="form-control"
                   type="text"
                   id="introduction"
                   name="introduction"
                 />
-                <h2>Jurisdiction</h2>
+                <h2>Jurisdiction and Procedure</h2>
                 <div className="form-group">
                   <label for="section_number">Section #: </label>
                   <input
@@ -185,12 +240,12 @@ class App extends Component {
                   </select>
                 </div>
                 <h2>Evidence and Analysis</h2>
-                <p>Summary:</p>
-                <textarea
+                <input
                   className="form-control"
+                  type="text"
                   id="evidence_analysis"
                   name="evidence_analysis"
-                ></textarea>
+                ></input>
                 <h2>Orders</h2>
                 <div className="form-group">
                   <label for="decision">Decision: </label>
@@ -213,13 +268,13 @@ class App extends Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="reimbursement_applicant">
+                  <label for="reimburse_applicant">
                     Reimbursement to Applicant:{" "}
                   </label>
                   <select
                     className="form-control"
-                    id="reimbursement_applicant"
-                    name="reimbursement_applicant"
+                    id="reimburse_applicant"
+                    name="reimburse_applicant"
                   >
                     <option value="1">Yes</option>
                     <option value="0">No</option>
