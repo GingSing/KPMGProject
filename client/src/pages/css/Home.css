@@ -3,9 +3,19 @@
   flex-direction: column;
 }
 
-.home > h1 {
-  align-self: center;
+.header {
+  width:100%;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
 }
+
+.header {
+  color: white;
+}
+
 .keyForm {
   overflow-y: scroll;
   padding: 20px;
