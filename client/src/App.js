@@ -59,7 +59,6 @@ class App extends Component {
                 type="text"
                 id="index"
                 name="index"
-                size="40"
               />
             </div>
             <div className="form-group">
