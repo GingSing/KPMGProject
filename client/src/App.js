@@ -23,7 +23,8 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="App">
+        <h1>Court Order Template</h1>
         <div className="formWrapper">
           <form className="keyForm" onSubmit={this.handleSubmit}>
             <h2>General</h2>
@@ -119,119 +120,128 @@ class App extends Component {
                 name="tribunal_member"
               />
             </div>
-            <button type="submit">Create Template!</button>
+            <button
+              className="btn btn-primary btn-lg active"
+              type="submit"
+              onClick={this.handleClick}
+            >
+              Create Template
+            </button>
           </form>
         </div>
         {this.state.overlay ? (
           <Overlay loading={this.state.loading} handleClick={this.handleClick}>
-            <form>
-              <h2>Introduction</h2>
-              <p>Summary:</p>
-              <input
-                className="form-control"
-                type="text"
-                id="introduction"
-                name="introduction"
-              />
-
-              <h2>Jurisdiction</h2>
-              <div className="form-group">
-                <label for="section_number">Section #: </label>
+            <div className="templateWrapper">
+              <form className="templateForm">
+                <h2>Introduction</h2>
+                <p>Summary:</p>
                 <input
                   className="form-control"
-                  type="number"
-                  id="section_number"
-                  name="section_number"
+                  type="text"
+                  id="introduction"
+                  name="introduction"
                 />
-                <label for="rule_number">Rule #: </label>
-                <input
+                <h2>Jurisdiction</h2>
+                <div className="form-group">
+                  <label for="section_number">Section #: </label>
+                  <input
+                    className="form-control"
+                    type="number"
+                    id="section_number"
+                    name="section_number"
+                  />
+                  <label for="rule_number">Rule #: </label>
+                  <input
+                    className="form-control"
+                    type="number"
+                    id="rule_number"
+                    name="rule_number"
+                  />
+                </div>
+                <h2>Procedure</h2>
+                <div className="form-group">
+                  <label for="hearing_format">Format of Hearing: </label>
+                  <select
+                    className="form-control"
+                    id="hearing_format"
+                    name="hearing_format"
+                  >
+                    <option value="Written">Written</option>
+                    <option value="Oral">Oral</option>
+                  </select>
+                </div>
+                <h2>Issues</h2>
+                <div className="form-group">
+                  <label for="issue_type">
+                    Is the issue in dispute for applicant's
+                    withdrawal/dismissal?{" "}
+                  </label>
+                  <select
+                    className="form-control"
+                    id="issue_type"
+                    name="issue_type"
+                  >
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                  </select>
+                </div>
+                <h2>Evidence and Analysis</h2>
+                <p>Summary:</p>
+                <textarea
                   className="form-control"
-                  type="number"
-                  id="rule_number"
-                  name="rule_number"
-                />
-              </div>
-
-              <h2>Procedure</h2>
-              <div className="form-group">
-                <label for="hearing_format">Format of Hearing: </label>
-                <select
-                  className="form-control"
-                  id="hearing_format"
-                  name="hearing_format"
-                >
-                  <option value="Written">Written</option>
-                  <option value="Oral">Oral</option>
-                </select>
-              </div>
-
-              <h2>Issues</h2>
-              <div className="form-group">
-                <label for="issue_type">
-                  Is the issue in dispute for applicant's withdrawal/dismissal?{" "}
-                </label>
-                <select
-                  className="form-control"
-                  id="issue_type"
-                  name="issue_type"
-                >
-                  <option value="1">Yes</option>
-                  <option value="0">No</option>
-                </select>
-              </div>
-
-              <h2>Evidence and Analysis</h2>
-              <p>Summary:</p>
-              <textarea
-                className="form-control"
-                id="evidence_analysis"
-                name="evidence_analysis"
-              ></textarea>
-
-              <h2>Orders</h2>
-              <div className="form-group">
-                <label for="decision">Decision: </label>
-                <select
-                  className="form-control"
-                  id="issue_type"
-                  name="issue_type"
-                >
-                  <option value="1">Accepted</option>
-                  <option value="0">Dismissed</option>
-                </select>
-              </div>
-              <div className="form-group">
-                <label for="claim_amount">Claim Amount: </label>
-                <input
-                  className="form-control"
-                  type="number"
-                  id="claim_amount"
-                  name="claim_amount"
-                />
-              </div>
-              <div className="form-group">
-                <label for="reimbursement_applicant">
-                  Reimbursement to Applicant:{" "}
-                </label>
-                <select
-                  className="form-control"
-                  id="reimbursement_applicant"
-                  name="reimbursement_applicant"
-                >
-                  <option value="1">Yes</option>
-                  <option value="0">No</option>
-                </select>
-              </div>
-              <div className="form-group">
-                <label for="reimbursement_amount">Reimbursement Amount: </label>
-                <input
-                  className="form-control"
-                  type="number"
-                  id="reimbursement_amount"
-                  name="reimbursement_amount"
-                />
-              </div>
-            </form>
+                  id="evidence_analysis"
+                  name="evidence_analysis"
+                ></textarea>
+                <h2>Orders</h2>
+                <div className="form-group">
+                  <label for="decision">Decision: </label>
+                  <select
+                    className="form-control"
+                    id="issue_type"
+                    name="issue_type"
+                  >
+                    <option value="1">Accepted</option>
+                    <option value="0">Dismissed</option>
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label for="claim_amount">Claim Amount: </label>
+                  <input
+                    className="form-control"
+                    type="number"
+                    id="claim_amount"
+                    name="claim_amount"
+                  />
+                </div>
+                <div className="form-group">
+                  <label for="reimbursement_applicant">
+                    Reimbursement to Applicant:{" "}
+                  </label>
+                  <select
+                    className="form-control"
+                    id="reimbursement_applicant"
+                    name="reimbursement_applicant"
+                  >
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label for="reimbursement_amount">
+                    Reimbursement Amount:{" "}
+                  </label>
+                  <input
+                    className="form-control"
+                    type="number"
+                    id="reimbursement_amount"
+                    name="reimbursement_amount"
+                  />
+                </div>
+                <button className="btn btn-primary btn-lg active" type="submit">
+                  Create Form
+                </button>
+              </form>
+            </div>
           </Overlay>
         ) : null}
       </div>
