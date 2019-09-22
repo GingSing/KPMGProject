@@ -1,9 +1,9 @@
-.App {
+.home {
   display: flex;
   flex-direction: column;
 }
 
-.App > h1 {
+.home > h1 {
   align-self: center;
 }
 .keyForm {
@@ -32,36 +32,12 @@
   flex-direction: column;
 }
 
-.templateForm > button {
-  margin-bottom: 20px;
+.completed-link {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .templateWrapper {
   background-color: white;
   border-radius: 5px;
-}
-
-.rightText {
-  text-align: right;
-  font-family: 'Times New Roman';
-  /* font-size: 12px; */
-}
-
-.centerText {
-  text-align: center;
-  font-family: 'Times New Roman';
-}
-
-.leftText {
-  text-align: left;
-  font-family: 'Times New Roman';
-}
-
-p {
-  white-space: pre-line;
-}
-
-h2 {
-  font-family: "Times New Roman";
-  font-weight: bold;
 }

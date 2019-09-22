@@ -1,3 +1,4 @@
-import KeyForm from "./KeyForm";
+import Home from "./Home";
+import Completed from "./Completed";
 
-export { KeyForm };
+export { Home, Completed };
