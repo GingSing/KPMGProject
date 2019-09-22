@@ -15,7 +15,12 @@ class Home extends Component {
   }
 
   handleClick() {
-    this.setState({ overlay: !this.state.overlay });
+    this.setState({ overlay: !this.state.overlay, loading: true });
+    setTimeout(() => {
+      this.setState({
+        loading: false
+      });
+    }, 2000);
   }
 
   handleSubmit(e) {
