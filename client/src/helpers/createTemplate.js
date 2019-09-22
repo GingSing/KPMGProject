@@ -1,3 +1,3 @@
-export const createTemplate = () => {
+export default createTemplate = () => {
   console.log("hello");
 };

@@ -1,0 +1,16 @@
+.keyForm {
+  overflow-y: scroll;
+  padding: 20px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+}
+
+.keyForm * {
+  margin-bottom: 10px;
+}
+
+.formWrapper {
+  background-color: white;
+  border-radius: 5px;
+}
